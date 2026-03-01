@@ -1,5 +1,6 @@
 import { Component, Input } from '@angular/core';
 import { Task } from './task/task';
+import { type Task as TaskModel } from './task/task.model';
 
 @Component({
   selector: 'app-tasks',
@@ -10,7 +11,7 @@ import { Task } from './task/task';
 export class Tasks {
   @Input({ required: true }) name!: string;
   @Input({ required: true }) userId!: string;
-  tasks = [
+  tasks: TaskModel[] = [
     {
       id: 't1',
       userId: 'u1',
@@ -38,5 +39,9 @@ export class Tasks {
 
   get filteredTasks() {
     return this.tasks.filter(task => task.userId === this.userId);
+  }
+
+  onCompleteTask(id: string) {
+    this.tasks = this.tasks.filter(task => task.id !== id);
   }
 }
