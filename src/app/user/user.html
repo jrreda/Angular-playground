@@ -1,5 +1,5 @@
 <div class="user">
-  <button (click)="onSelectUser()">
+  <button (click)="onSelectUser()" [attr.aria-selected]="selected" [class.active]="selected">
     <span>{{ name.slice(0, 2) }}</span>
     <h2>{{ name }}</h2>
   </button>

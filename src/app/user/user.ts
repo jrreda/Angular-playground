@@ -9,6 +9,7 @@ import { Component, EventEmitter, Input, Output } from '@angular/core';
 export class User {
   @Input() id!: string
   @Input({ required: true }) name!: string
+  @Input({ required: true }) selected!: boolean;
   @Output() select = new EventEmitter<string>();
 
   onSelectUser() {

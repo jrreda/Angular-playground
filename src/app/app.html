@@ -4,7 +4,7 @@
 <menu class="users" role="listbox">
   @for (user of users(); track user.id) {
     <li role="option">
-      <app-user [name]="user.name" [id]="user.id" (select)="onSelectUser($event)" />
+      <app-user [selected]="user.id === selectedUserId()" [name]="user.name" [id]="user.id" (select)="onSelectUser($event)" />
     </li>
   } @empty {
     <li>No users found</li>
@@ -12,4 +12,4 @@
 </menu>
 
 <!-- tasks -->
-<app-tasks [name]="selectedUser.name" />
+<app-tasks [name]="selectedUser.name" [userId]="selectedUserId()!" />

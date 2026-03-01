@@ -7,8 +7,12 @@
   </header>
 
   <ul>
-    <li>Task 1</li>
-    <li>Task 2</li>
-    <li>Task 3</li>
+    @for (task of filteredTasks; track task.id) {
+      <li>
+        <app-task [task]="task" />
+      </li>
+    } @empty {
+      <li>No tasks for {{ name }} found</li>
+    }
   </ul>
 </section>
