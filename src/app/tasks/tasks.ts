@@ -1,6 +1,6 @@
 import { Component, Input } from '@angular/core';
 import { Task } from './task/task';
-import { type Task as TaskModel } from './task/task.model';
+import { type Task as TaskModel, type NewTask as NewTaskModel } from './task/task.model';
 import { NewTask } from './new-task/new-task';
 
 @Component({
@@ -52,6 +52,18 @@ export class Tasks {
   }
 
   onCancelAddTask() {
+    this.isAddingTask = false;
+  }
+
+  onCreateTask(newTask: NewTaskModel) {
+    this.tasks.unshift({
+      id: crypto.randomUUID(),
+      userId: this.userId,
+      title: newTask.title,
+      summary: newTask.summary,
+      dueDate: newTask.dueDate,
+    });
+
     this.isAddingTask = false;
   }
 }
