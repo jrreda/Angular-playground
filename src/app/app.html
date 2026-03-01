@@ -1,9 +1,15 @@
 <app-header />
 
 <!-- single user -->
-<app-user [name]="'Jasmine Washington'" [id]="'u1'" (select)="onSelectUser($event)" />
+<menu class="users" role="listbox">
+  @for (user of users(); track user.id) {
+    <li role="option">
+      <app-user [name]="user.name" [id]="user.id" (select)="onSelectUser($event)" />
+    </li>
+  } @empty {
+    <li>No users found</li>
+  }
+</menu>
 
-<!-- users -->
-<div class="users">
-  <app-user *ngFor="let user of users()" [name]="user.name()" />
-</div>
+<!-- tasks -->
+<app-tasks [name]="selectedUser.name" />
