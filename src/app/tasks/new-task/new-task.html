@@ -18,7 +18,7 @@
     </p>
 
     <p class="actions">
-      <button type="button" (click)="onCancelAddTask()">Cancel</button>
+      <button type="button" (click)="onClose()">Close</button>
       <button type="submit" [disabled]="title.length === 0 || summary.length === 0 || dueDate.length === 0">Create</button>
     </p>
   </form>
